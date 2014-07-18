@@ -22,6 +22,8 @@ RUN cd /tmp ;\
     rm -f /tmp/chefdk.deb
 
 # Make Chef DK the primary Ruby/Chef development environment.
-RUN echo 'eval "$(chef shell-init bash)"' >> ~/.bashrc
+RUN echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
+
+ENV PATH /opt/chefdk/bin:/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 CMD ["chef"]
