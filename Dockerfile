@@ -27,4 +27,5 @@ RUN echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
 
 RUN chef gem install kitchen-docker
 
-CMD ["chef"]
+VOLUME /var/lib/docker
+CMD ["wrapdocker"]
