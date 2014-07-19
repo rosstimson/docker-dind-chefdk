@@ -14,6 +14,7 @@ FROM jpetazzo/dind
 MAINTAINER Ross Timson <ross@rosstimson.com>
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV PATH /opt/chefdk/bin:/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Download and install ChefDK.
 RUN cd /tmp ;\
@@ -24,6 +25,6 @@ RUN cd /tmp ;\
 # Make Chef DK the primary Ruby/Chef development environment.
 RUN echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
 
-ENV PATH /opt/chefdk/bin:/.chefdk/gem/ruby/2.1.0/bin:/opt/chefdk/embedded/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN chef gem install kitchen-docker
 
 CMD ["chef"]
